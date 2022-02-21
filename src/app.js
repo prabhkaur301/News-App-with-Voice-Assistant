@@ -8,7 +8,7 @@ const App=()=>{
         alanBtn({
             key:apiKey,
             onCommand: (commandData) => {
-                if (commandData.command === 'go:back') {
+                if (commandData.command === '') {
                     // Call the client code that will react to the received command
                 }
             }
