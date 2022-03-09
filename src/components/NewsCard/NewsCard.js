@@ -8,16 +8,16 @@ const NewsCard = ({ newsArticle, index }) => {
   const classes = useStyles()
   return (
 
-    <Card>
+    <Card className={classes.card}>
       <CardActionArea href={newsArticle.url} target="_blank">
         <CardMedia className={classes.media} image={newsArticle.urlToImage || "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"} />
 
 
         <div className={classes.details}>
           <Typography varient="body2" color="textSecondary" component="h2">{(new Date(newsArticle.publishedAt)).toDateString()}</Typography>
-          <Typography varient="h5" gutterBottom className={classes.title}>{newsArticle.title}</Typography>
+          <Typography varient="body2" color="textSecondary" component="h2">{newsArticle.source.name}</Typography>
         </div>
-
+        <Typography varient="h2" gutterBottom className={classes.title}>{newsArticle.title}</Typography>
         <CardContent>
           <Typography varient="body2" color="textSecondary" component="p" >{newsArticle.description}</Typography>
         </CardContent>

@@ -1,6 +1,10 @@
 import React,{useEffect,useState} from "react"
 import alanBtn from "@alan-ai/alan-sdk-web";
 import Cards from "./components/NewsCards/Cards";
+import lottie from "lottie-web";
+import robot from "./lottie/73234-robot-assistant-online-manager (1).json";
+import { Typography } from "@material-ui/core";
+
 
 const App=()=>{
     // setting the state for articles
@@ -16,16 +20,32 @@ const App=()=>{
                     console.log(articles)
                     setNewsArticles(articles)
                 }
+                else if (command === "term-headline") {
+                    setNewsArticles(articles)
+                }
                
             }
         })
     },[])
+    useEffect(() => {
+        lottie.loadAnimation({
+        container: document.querySelector("#robot"),
+        animationData: robot
+        });
+      }, []);
 
     return(
        <>
-           
-              <h1>News App with Voice Assistant</h1>
+             
+              {
+              (newsArticles.length<=0) &&
+              <div className="container" style={{ display: "flex",flexDirection:"column",alignItems:"center" }}>
+              <div id="robot" style={{ width: 200, height: 200 }}/>
+              <Typography variant="h2" color="textPrimary" style={{textAlign:'center',fontSize:'30px'}}>Hi! I'm Alan,<br/> Your personal News Assistant</Typography>
+              </div>
+              }
               <Cards articles={newsArticles}/>
+            
                
            
        </>

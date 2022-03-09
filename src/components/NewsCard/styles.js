@@ -1,7 +1,8 @@
 import { makeStyles } from "@material-ui/core";
 export default makeStyles({    // making a hook
     media:{
-        height:250
+        height:200,
+        backgroundPosition:'top left'
     },
     border: {
         border: 'solid',
@@ -27,7 +28,8 @@ export default makeStyles({    // making a hook
         margin: '20px',
       },
       title: {
-        padding: '0 16px',
+          padding:'0 20px',
+       fontWeight:'bold'
       },
       cardActions: {
         padding: '0 16px 8px 16px',
