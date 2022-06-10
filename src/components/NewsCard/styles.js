@@ -16,7 +16,7 @@ export default makeStyles({    // making a hook
         justifyContent: 'space-between',
         borderBottom: '10px solid white',
       },
-      activeCard: {
+      highlight: {
         borderBottom: '10px solid #22289a',
       },
       grid: {

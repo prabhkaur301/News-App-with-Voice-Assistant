@@ -12,18 +12,18 @@ const infoCards=[
   
 ];
 
-const Cards = ({articles}) => {
+const Cards = ({articles,highlightArticle}) => {
   
  const classes = useStyles();
 
  if(!articles.length){
    return(
-    <Grow in  direction="left">
+    <Grow in direction="left">
     <Grid className={classes.container} container alignItems="stretch" spacing={3}>
      
      {
      infoCards.map((infoCard,i)=>(
-         <Grid item xs={12} sm={6} md={4} lg={3} className={classes.container}>
+         <Grid item xs={12} sm={6} md={4} lg={3} className={classes.container} key={i}>
            <div className={classes.card} style={{backgroundColor:infoCard.color}}>
              <Typography variant="h4" component="h4" ><strong>{infoCard.title}</strong></Typography>
              {infoCard.info?<Typography variant="body2" component="p" >{infoCard.info}</Typography>:null}
@@ -35,19 +35,21 @@ const Cards = ({articles}) => {
     </Grow>
    )
  }
-
+ else{
   return (
     <Grow in  direction="left">
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {articles.map((article,i)=>
         (
         <Grid item xs={12} sm={6} md={4} lg={4} style={{display:'flex'}}>
-          <NewsCard className={classes.card} newsArticle={article} index={i} />
+          <NewsCard className={classes.card} newsArticle={article} highlightArticle={highlightArticle} index={i} />
         </Grid>
         ))}
       </Grid>
     </Grow>
   )
 }
+ }
+  
 
-export default Cards
+export default Cards;
