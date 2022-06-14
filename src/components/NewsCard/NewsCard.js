@@ -1,5 +1,6 @@
 import {React,useState,useEffect, createRef} from 'react'
-import { Card, CardActionArea, CardActions, CardContent, Button, Typography, CardMedia } from '@material-ui/core'
+import { Card, CardActionArea, CardActions, CardContent, Button, Typography, CardMedia,IconButton } from '@material-ui/core'
+import BookmarkIcon from '@material-ui/icons/Bookmark';
 import useStyles from "./styles"
 import classNames from 'classnames'
 
@@ -41,9 +42,16 @@ const NewsCard = ({ newsArticle, index,highlightArticle }) => {
       </CardActionArea>
 
       <CardActions className={classes.cardActions}>
+        <div className="buttonGroup">
         <Button size="small" color="primary" href={newsArticle.url} target="_blank">
           Learn More
         </Button>
+        <IconButton aria-label="Save this article">
+          <BookmarkIcon/>
+        </IconButton>
+
+        </div>
+     
         <Typography variant="h5" color="textSecondary" >{index + 1}</Typography>
       </CardActions>
     </Card>
