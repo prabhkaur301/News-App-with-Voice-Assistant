@@ -5,6 +5,7 @@ import lottie from "lottie-web";
 import robot from "./lottie/73234-robot-assistant-online-manager (1).json";
 import { Typography } from "@material-ui/core";
 import wordsToNumbers from "words-to-numbers";
+import {NavLink} from "react-router-dom"
 
 
 const App=()=>{
@@ -27,12 +28,16 @@ const App=()=>{
                 else if(command === "highlight"){
                     setHighlightArticle((prevHighlightArticle)=>prevHighlightArticle+1);
                 }
-                if(command === "top-headline"){
+                if(command === "newHeadlines"){
                     console.log(articles)
                     setNewsArticles(articles)
                 }
                 else if(command === 'openArticle'){
                     window.open(articles[wordsToNumbers(number)].url, '_blank');
+                    setNewsArticles(articles)
+                }
+                else if(command === 'saveArticle'){
+                    localStorage.setItem("savedNews",JSON.stringify(articles[wordsToNumbers(number)]));
                     setNewsArticles(articles)
                 }
                
@@ -47,7 +52,9 @@ const App=()=>{
       }, []);
 
     return(
-       <>
+       <>   
+       
+            <NavLink to="/saved">Saved Articles</NavLink>
              {
               <div className="container" style={{ display: "flex",flexDirection:"column",alignItems:"center" }}>
               <div id="robot" style={{ width: 200, height: 200 }}/>
@@ -55,7 +62,7 @@ const App=()=>{
               </div>
               }
               <Cards articles={newsArticles} highlightArticle={highlightArticle}/>
-            
+              
         </>
     )
 }
