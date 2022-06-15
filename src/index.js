@@ -9,9 +9,6 @@ import SavedArticles from "./pages/SavedArticles"
 
 ReactDom.render(
     <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<App />} />
-            {/* <Route path="/saved" element={<SavedArticles />} /> */}
-        </Routes>
+        <App/>
     </BrowserRouter>
     , document.getElementById("root"))
