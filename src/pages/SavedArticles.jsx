@@ -9,7 +9,7 @@ const SavedArticles = () => {
    useEffect(()=>{
       let articlesAdded=localStorage.getItem('savedNews');
       setStoredArticles(JSON.parse(articlesAdded));
-   },[])
+   },[storedArticles])
   return (
     <Grow in  direction="left">
     <Grid className={classes.container} container alignItems="stretch" spacing={3}>
